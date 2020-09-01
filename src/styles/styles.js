@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
       borderWidth: 1 ,
       borderRadius: 20,
       marginBottom: 20, 
-      fontSize: 18
+      fontSize: 15
     }
   });
 

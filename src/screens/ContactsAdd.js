@@ -7,7 +7,7 @@ export default class ContactsAdd extends React.Component {
     render(){
       return (
         <View style={styles.container}>
-          <TextInput style={styles.txtInput}/>
+          <TextInput style={styles.txtInput}  placeholder="Nome"/>
           {/* <Text>Contatos!</Text> */}
           {/* <StatusBar style="auto" /> */}
         </View>
