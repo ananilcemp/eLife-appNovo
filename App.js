@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import {Text, View } from 'react-native';
-import ActionButton from 'react-native-action-button';
-import styles from './src/styles/styles';
+import {createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 
+import Home from './src/screens/Home';                
+import ContactsAdd from './src/screens/ContactsAdd';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Bem vindo ao eLife!</Text>
-      <StatusBar style="auto" />
-       <ActionButton 
-          buttonColor='blue'
-          // onPress = {()=>this.props.navigation.navigate('ContactsAddScreen')}     //redireciona para o formulario de cadastro de contatos de emergencia
-        />
-    </View>
-  );
-}
+//criacao da stack de navegacao entre telas
+const Nav = createStackNavigator({
+  Home:{    
+    screen:Home,
+    navigationOptions:{
+      title:'Home'
+    }
+  },
+  ContactsAdd:{
+    screen:ContactsAdd,
+    navigationOptions:{
+      title:'Contatos'
+    }
+  }
+})
+
+//adiciona a stack em um container
+const App = createAppContainer (Nav); 
+
+export default App;
 
