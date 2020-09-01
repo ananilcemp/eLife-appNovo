@@ -9,10 +9,15 @@ export default function Home ({navigation}){
     function navigationContacts(){
         navigation.navigate('ContactsAdd')
     }
+    function navigationRemedios(){
+        navigation.navigate('Remedios')
+    }
     return(
         <View style={styles.container}>
             {/* <Text>Bem vindo ao Home!</Text> */}
             <Button title="Contatos" onPress={navigationContacts}/>
+            
+            <Button title="Remédios" onPress={navigationRemedios}/>
         </View>
     );
 
