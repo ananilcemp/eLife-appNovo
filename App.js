@@ -3,6 +3,7 @@ import { createAppContainer } from 'react-navigation';
 
 import Home from './src/screens/Home';                
 import ContactsAdd from './src/screens/ContactsAdd';
+import Remedios from './src/screens/Remedios';
 
 //criacao da stack de navegacao entre telas
 const Nav = createStackNavigator({
@@ -16,6 +17,12 @@ const Nav = createStackNavigator({
     screen:ContactsAdd,
     navigationOptions:{
       title:'Contatos'
+    }
+  },
+  Remedios:{
+    screen:Remedios,
+    navigationOptions:{
+      title:'Remédios'
     }
   }
 })
