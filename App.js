@@ -1,8 +1,9 @@
 import {createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation'; 
 
 import Home from './src/screens/Home';                
 import ContactsAdd from './src/screens/ContactsAdd';
+import Remedios from './src/screens/Remedios';
 import Login from './src/screens/Login';
 
 import * as firebase from 'firebase';
@@ -21,7 +22,6 @@ const firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-
 //criacao da stack de navegacao entre telas
 const Nav = createStackNavigator({
   Login:{
@@ -39,7 +39,13 @@ const Nav = createStackNavigator({
   ContactsAdd:{
     screen:ContactsAdd,
     navigationOptions:{
-      title:'Contatos'
+      title:'Cadastrar Contatos'
+    }
+  },
+  Remedios:{
+    screen:Remedios,
+    navigationOptions:{
+      title:'Remédios'
     }
   }
   
