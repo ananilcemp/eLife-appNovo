@@ -1,5 +1,5 @@
 import {createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation'; 
 
 import Home from './src/screens/Home';                
 import ContactsAdd from './src/screens/ContactsAdd';
@@ -16,7 +16,7 @@ const Nav = createStackNavigator({
   ContactsAdd:{
     screen:ContactsAdd,
     navigationOptions:{
-      title:'Contatos'
+      title:'Cadastrar Contatos'
     }
   },
   Remedios:{
