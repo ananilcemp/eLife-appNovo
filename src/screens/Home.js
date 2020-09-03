@@ -7,7 +7,7 @@ import styles from '../styles/styles';
 export default function Home ({navigation}){
     //navegacao para a pagina de contatos
     function navigationContacts(){
-        navigation.navigate('ContactsAdd')
+        navigation.navigate('ContactsList')
     }
     function navigationRemedios(){
         navigation.navigate('Remedios')

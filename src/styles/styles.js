@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
       textAlign:'center'
     },
+    containerList: {
+         flex: 1,
+         paddingBottom: 22
+    },
     txtInput: {
       width:280,
       height: 40, 
@@ -33,6 +37,10 @@ const styles = StyleSheet.create({
     txtButton:{
      textAlign:'center',
      fontSize: 20
+    },
+    txtLogin: {
+      color: '#fff',
+      fontSize: 18,
     }
   });
 

@@ -44,12 +44,11 @@ export default class App extends React.Component {
     try{
       firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
         console.log(user)
-        //Aqui vai a navegação para Home
       })
 
-      function navigationContacts(){
-        navigation.navigate('Home')
-    }
+      
+        this.props.navigation.navigate('Home')
+    
 
     }catch(error){
       console.log(error.toString())
