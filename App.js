@@ -51,7 +51,7 @@ const Nav = createStackNavigator({
   
 })
 
-//adiciona a stack em um container
+
 const App = createAppContainer (Nav); 
 
 export default App;
