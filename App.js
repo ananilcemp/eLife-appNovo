@@ -5,7 +5,8 @@ import Home from './src/screens/Home';
 import ContactsAdd from './src/screens/ContactsAdd';
 import ContactsList from './src/screens/ContactsList';
 import ContactsUpdateDelete from './src/screens/ContactsUpdateDelete';
-import Remedios from './src/screens/Remedios';
+import Medicines from './src/screens/Medicines';
+import MedicinesAdd from './src/screens/MedicinesAdd';
 import Login from './src/screens/Login';
 
 import * as firebase from 'firebase';
@@ -71,10 +72,16 @@ const Nav = createStackNavigator({
       title:'Apagar/Atualizar Contatos de Emergência'
     }
   },
-  Remedios:{
-    screen:Remedios,
+  Medicines:{
+    screen:Medicines,
     navigationOptions:{
       title:'Remédios'
+    }
+  },
+  MedicinesAdd:{
+    screen:MedicinesAdd,
+    navigationOptions:{
+      title:'Cadastrar Remédios'
     }
   }
   

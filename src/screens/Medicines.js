@@ -4,7 +4,7 @@ import styles from '../styles/styles';
 
 export default function Remedios ({navigation}){
     function navigationAdd(){
-        navigation.navigate('AddRemedio')
+        navigation.navigate('MedicinesAdd')
     }
       return (
         <View style={styles.container}>
