@@ -1,11 +1,13 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import styles from '../styles/styles';
 
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import { Image } from 'react-native';
+
 
 import * as firebase from 'firebase';
 
@@ -41,7 +43,6 @@ export default class App extends React.Component {
       return;
     }
   }
-
   loginUser = (email, password) => {
 
     try {
@@ -69,7 +70,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <AnimatedContainer style={styles.container}
+      <AnimatedContainer style={styles.containerLogin}
         animation="bounceIn"
         useNativeDriver
       >
@@ -117,43 +118,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    padding: 10,
-  },
-
-  botaoLogin: {
-    margin: 10,
-    marginTop: 40,
-  },
-
-  botaoCadastrar: {
-    margin: 10,
-    backgroundColor: '#666666',
-  },
-
-  txtLogin: {
-    color: '#fff',
-    fontSize: 18,
-  },
-
-  txtCadastrar: {
-    color: '#fff',
-    fontSize: 18,
-  },
-
-  logoView: {
-    alignItems: "center",
-    justifyContent: "center"
-  },
-
-  logo: {
-    width: 210,
-    height: 70,
-  }
-});

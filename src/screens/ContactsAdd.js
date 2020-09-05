@@ -51,15 +51,9 @@ export default class ContactsAdd extends React.Component {
       });     
     }
 
-
-
     render(){
       return (
-      
-       
-
-
-        <KeyboardAvoidingView style={styles.container}  enable>
+        <KeyboardAvoidingView style={styles.containerLogin}  enable>
            <View style={styles.containerTop}>
                 <Image source={require('../images/telefone.png')} style={styles.imageContacts} />
           </View>
@@ -67,25 +61,27 @@ export default class ContactsAdd extends React.Component {
             <TextInput style={styles.txtInput}  placeholder="Nome" value={this.state.name} onChangeText={(val) => this.inputValueUpdate(val, 'name')}/>
             <TextInput style={styles.txtInput}  placeholder="Telefone" value={this.state.phone} onChangeText={(val) => this.inputValueUpdate(val, 'phone')}/>
             <TextInput style={styles.txtInput}  placeholder="Descrição" value={this.state.description} onChangeText={(val) => this.inputValueUpdate(val, 'description')}/>
+            
             <Button style={styles.botaoLogin}
+            full
+            rounded
+            success
+            onPress={() =>this.storeContact()}
+          >
+            <Text style={styles.txtLogin}>Salvar</Text>
+          </Button>
+            
+            
+            
+            {/* <Button style={styles.botaoLogin}
             full
             rounded
             success
             onPress={() =>this.storeContact()}
             >
             <Text style={styles.txtLogin}>Salvar</Text>
-          </Button>
-            {/* <Icon.Button
-                name="checkcircle"
-                backgroundColor="#228b22"
-                size={30}
-                borderRadius={50}
-                onPress={() => alert('Cadastrar')}><Text style={styles.txtButton} >Salvar</Text>
-                </Icon.Button> */}
-            
-                
-          </View>
-          
+            </Button> */}
+          </View> 
         </KeyboardAvoidingView>
       );
       }

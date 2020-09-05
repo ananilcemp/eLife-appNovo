@@ -5,6 +5,7 @@ import { Alert, Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, Vi
 import * as firebase from 'firebase';
 
 
+
 class ContactsUpdateDelete extends Component {
 
   constructor() {
@@ -99,6 +100,7 @@ class ContactsUpdateDelete extends Component {
       <ScrollView style={styles.container}>
         <View style={styles.inputGroup}>
           <TextInput
+            style={styles.txtInput}
               placeholder={'Name'}
               value={this.state.name}
               onChangeText={(val) => this.inputValueUpdate(val, 'name')}
@@ -107,7 +109,6 @@ class ContactsUpdateDelete extends Component {
         <View style={styles.inputGroup}>
           <TextInput
               multiline={true}
-              numberOfLines={4}
               placeholder={'Telefone'}
               value={this.state.phone}
               onChangeText={(val) => this.inputValueUpdate(val, 'phone')}
@@ -128,7 +129,10 @@ class ContactsUpdateDelete extends Component {
           />
           </View>
          <View>
-          <Button
+          <Button style={styles.botaoLogin}
+            full
+            rounded
+            success
             title='Apagar'
             onPress={this.openTwoButtonAlert}
             color="#E37399"

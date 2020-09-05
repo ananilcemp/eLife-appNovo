@@ -69,7 +69,7 @@ const Nav = createStackNavigator({
   ContactsUpdateDelete:{
     screen:ContactsUpdateDelete,
     navigationOptions:{
-      title:'Apagar/Atualizar Contatos de Emergência'
+      title:'Detalhes do Contato'
     }
   },
   Medicines:{
