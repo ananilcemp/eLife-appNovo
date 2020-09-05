@@ -1,12 +1,14 @@
-import {createStackNavigator } from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable'
+import { Image } from 'react-native';
 
 import * as firebase from 'firebase';
+
 
 const AnimatedContainer = Animatable.createAnimatableComponent(Container);
 
@@ -17,7 +19,7 @@ import { render } from 'react-dom';
 
 export default class App extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
 
     this.state = ({
@@ -26,33 +28,42 @@ export default class App extends React.Component {
     })
   }
 
-  signUpUser = (email, password) =>{
-    try{
-      if(this.state.password.length < 6){
-        alert ("A senha deve conter no mínimo 6 caractéres.")
+  signUpUser = (email, password) => {
+    try {
+      if (this.state.password.length < 6) {
+        alert("A senha deve conter no mínimo 6 caractéres.")
         return;
       }
 
       firebase.auth().createUserWithEmailAndPassword(email, password);
-    }catch(error){
+    } catch (error) {
       console.log(error.toString())
       return;
     }
   }
 
-  loginUser = (email, password) =>{
-    try{
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
-        console.log(user)
-      })
+  loginUser = (email, password) => {
 
-      
-        this.props.navigation.navigate('Home')
-    
+    try {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => this.props.navigation.navigate('Home'))
+        .catch(error => {
+          if (error.message === 'The password is invalid or the user does not have a password.') {
+            alert("Verifique sua senha!")
+          }
+          else if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+            alert("Esse email ainda não foi cadastrado ou foi deletado. Por favor insira outro email ou clique no botão cadastrar")
+          }
+          else if(error.message === 'The email address is badly formatted.'){
+            alert("O email não foi inserido ou está mal formatado.")
+          }
+          else{
+            alert(error.message)
+          }
 
-    }catch(error){
-      console.log(error.toString())
-      return;
+        })
+    } catch (err) {
+      alert(err);
     }
   }
 
@@ -63,6 +74,9 @@ export default class App extends React.Component {
         useNativeDriver
       >
         <Form>
+          <View style={styles.logoView}>
+            <Image source={require('../images/eLife_Logo.png')} style={styles.logo} />
+          </View>
           <Item floatingLabel>
             <Label>Email</Label>
             <Input
@@ -120,7 +134,7 @@ const styles = StyleSheet.create({
 
   botaoCadastrar: {
     margin: 10,
-    backgroundColor: '#4682B4',
+    backgroundColor: '#666666',
   },
 
   txtLogin: {
@@ -131,5 +145,15 @@ const styles = StyleSheet.create({
   txtCadastrar: {
     color: '#fff',
     fontSize: 18,
+  },
+
+  logoView: {
+    alignItems: "center",
+    justifyContent: "center"
+  },
+
+  logo: {
+    width: 210,
+    height: 70,
   }
 });
