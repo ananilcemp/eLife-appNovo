@@ -31,11 +31,7 @@ const Nav = createStackNavigator({
   Login:{
     screen:Login,
     navigationOptions:{
-<<<<<<< HEAD
-    title:'Login'
-=======
       title:'Login'
->>>>>>> d3968d3acb788ad1925b550e6c0847e68d8548b2
     }
   },
   Home:{    

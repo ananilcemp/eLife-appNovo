@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import {Text, View ,TextInput,Image, KeyboardAvoidingView,ScrollView} from 'react-native';
+import {Text, View, TextInput, Image, KeyboardAvoidingView,ScrollView} from 'react-native';
 import {Button} from 'native-base';
 import styles from '../styles/styles';
 import Icon from 'react-native-vector-icons/AntDesign';

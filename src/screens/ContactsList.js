@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Linking, ScrollView, TouchableOpacity } from 'react-native';
-=======
 import { Linking, ScrollView, TouchableOpacity, View } from 'react-native';
->>>>>>> d3968d3acb788ad1925b550e6c0847e68d8548b2
 import { Divider, ListItem } from 'react-native-elements';
 import styles from '../styles/styles';
 import * as firebase from 'firebase';
 // import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
-<<<<<<< HEAD
-import { Fab } from 'react-native-paper';
-import { View } from 'react-native-animatable';
-
-=======
 // import { Fab } from 'react-native-paper';
->>>>>>> d3968d3acb788ad1925b550e6c0847e68d8548b2
 
 class ContactsList extends Component {
 
@@ -63,10 +53,6 @@ class ContactsList extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-
-=======
->>>>>>> d3968d3acb788ad1925b550e6c0847e68d8548b2
       <ScrollView style={styles.containerList} style={styles.containerList}>
         {
           this.state.userArr.map((item, i) => {
@@ -88,34 +74,6 @@ class ContactsList extends Component {
             );
           })
         }
-<<<<<<< HEAD
-       
-        <View style={styles.viewTest}>
-
-        
-        <TouchableOpacity
-   style={{
-       borderWidth:1,
-       borderColor:'rgba(0,0,0,0.2)',
-       alignItems:'center',
-       justifyContent:'center',
-       width:70,
-       position: 'absolute',                                          
-       bottom: 5,                                                    
-       right: 10,
-       height:70,
-       backgroundColor:'#00BFFF',
-       borderRadius:100,
-     }}
- >
-   <Icon name="plus"  size={30} color="#fff" />
-  </TouchableOpacity>
-
-  </View>
-      </ScrollView>
-
-
-=======
         <View>
           <TouchableOpacity
             onPress={() => { this.props.navigation.navigate('ContactsAdd') }}
@@ -125,7 +83,6 @@ class ContactsList extends Component {
           </TouchableOpacity>
         </View>
       </ScrollView>
->>>>>>> d3968d3acb788ad1925b550e6c0847e68d8548b2
     );
   }
 }

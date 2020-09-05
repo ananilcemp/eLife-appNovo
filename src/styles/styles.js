@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     botaoCadastrar: {
       margin: 10,
-      backgroundColor: '#4682B4',
+      backgroundColor: '#666666',
     },
     botaoApagar: {
       margin: 10,
@@ -86,11 +86,6 @@ const styles = StyleSheet.create({
       color: '#fff',
       fontSize: 18,
     },
-<<<<<<< HEAD
-    viewTest:{
-      flex: 1,
-      
-=======
     inputGroup: {
       flex: 1,
       padding: 0,
@@ -106,7 +101,14 @@ const styles = StyleSheet.create({
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center'
->>>>>>> d3968d3acb788ad1925b550e6c0847e68d8548b2
+    },
+    logo:{
+      width: 210,
+      height: 70,
+    },
+    logoView:{
+      justifyContent: "center",
+      alignItems: "center"
     }
     
     
