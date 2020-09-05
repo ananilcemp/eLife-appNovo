@@ -42,12 +42,12 @@ if(!firebase.apps.length){
 
 //criacao da stack de navegacao entre telas
 const Nav = createStackNavigator({
-  // Login:{
-  //   screen:Login,
-  //   navigationOptions:{
-  //     title:'Login'
-  //   }
-  // },
+  Login:{
+    screen:Login,
+    navigationOptions:{
+      title:'Login'
+    }
+  },
   Home:{    
     screen:Home,
     navigationOptions:{
@@ -69,7 +69,7 @@ const Nav = createStackNavigator({
   ContactsUpdateDelete:{
     screen:ContactsUpdateDelete,
     navigationOptions:{
-      title:'Apagar/Atualizar Contatos de Emergência'
+      title:'Detalhes do Contato'
     }
   },
   Medicines:{

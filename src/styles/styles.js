@@ -38,10 +38,19 @@ const styles = StyleSheet.create({
      textAlign:'center',
      fontSize: 20
     },
+    botaoLogin: {
+      margin: 10,
+      marginTop: 40,
+    },
     txtLogin: {
       color: '#fff',
       fontSize: 18,
-    }
+    },
+    fab:{
+      position:'absolute',
+      
+    },
+    
   });
 
   export default styles;

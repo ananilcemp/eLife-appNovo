@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import {Linking, ScrollView ,TouchableOpacity} from 'react-native';
+import { Divider,ListItem } from 'react-native-elements';
 import styles from '../styles/styles';
 import * as firebase from 'firebase';
 import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Fab} from 'react-native-paper';
+
 
 class ContactsList extends Component {
 
@@ -40,6 +43,15 @@ class ContactsList extends Component {
    });
   }
 
+  //funcao para fazer chamada telefonica
+  makeCall = (number) => {
+    const args = {
+        number: number, 
+        Prompt: true 
+    }
+   call(args).catch(console.error)
+}
+
   render() { 
     return (
       
@@ -47,33 +59,41 @@ class ContactsList extends Component {
           {
             this.state.userArr.map((item, i) => {
               return (
-                <ListItem
-                  key={i}
-                  chevron
-                  bottomDivider
-                  title={item.name+" ("+item.description+")"}
-                  subtitle={item.phone}
-                  onPress={() => {
-                    this.props.navigation.navigate('ContactsUpdateDelete', {
+                <ListItem key={i} bottomDivider>
+                  <Icon name="phone-square" size={35} color="#228b22"  onPress={() =>  Linking.openURL(`tel:${item.phone}`)}/>
+                  <ListItem.Content>
+                    <ListItem.Title onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
                         userkey: item.key
-                      });
-                    // alert("Ligar para "+item.name+' ?')
-                  }}/>
+                      })}>{item.name}</ListItem.Title>
+                    <ListItem.Subtitle onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
+                      userkey: item.key
+                    })}>{item.description}</ListItem.Subtitle>
+                  </ListItem.Content>
+                  <ListItem.Chevron onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
+                    userkey: item.key
+                  })}  />
+                </ListItem>
               );
             })
           }
-          <ActionButton onPress={() => {
-                    this.props.navigation.navigate('ContactsAdd')}}> </ActionButton>
-        </ScrollView>
+            <TouchableOpacity>
+                <Icon name="plus-circle" size={50}  styles={styles.fab} onPress={() => {
+          this.props.navigation.navigate('ContactsAdd')}}></Icon>
+              </TouchableOpacity>
+          {/* <Fab color="red" aria-label="add" onPress={() => {
+              this.props.navigation.navigate('ContactsAdd')}}>
+              
+          </Fab> */}
+          
         
-        
-
-  
-    );
+          
+       </ScrollView>
        
-    
+       
+    );
   }
-  
 }
+
+
 
 export default ContactsList;
