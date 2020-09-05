@@ -2,10 +2,10 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import styles from '../styles/styles';
 
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable'
+<<<<<<< HEAD
 import { Image } from 'react-native';
 
 
@@ -16,8 +16,13 @@ const AnimatedContainer = Animatable.createAnimatableComponent(Container);
 
 
 
+=======
+import * as firebase from 'firebase';
+>>>>>>> d3968d3acb788ad1925b550e6c0847e68d8548b2
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import { render } from 'react-dom';
+
+const AnimatedContainer = Animatable.createAnimatableComponent(Container);
 
 export default class App extends React.Component {
 

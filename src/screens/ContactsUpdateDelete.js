@@ -1,9 +1,10 @@
 // screens/UserDetailScreen.js
 
 import React, { Component } from 'react';
-import { Alert, Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View } from 'react-native';
+import { Alert, StyleSheet, TextInput, ScrollView, ActivityIndicator, View,Text } from 'react-native';
 import * as firebase from 'firebase';
-
+import styles from '../styles/styles';
+import {Button} from 'native-base';
 
 
 class ContactsUpdateDelete extends Component {
@@ -97,18 +98,16 @@ class ContactsUpdateDelete extends Component {
     //   )
     // }
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.inputGroup}>
+      <ScrollView style={styles.containerForms}>
+          <View style={styles.inputGroup}>
           <TextInput
-            style={styles.txtInput}
-              placeholder={'Name'}
+              placeholder={'Nome'}
               value={this.state.name}
               onChangeText={(val) => this.inputValueUpdate(val, 'name')}
           />
         </View>
         <View style={styles.inputGroup}>
           <TextInput
-              multiline={true}
               placeholder={'Telefone'}
               value={this.state.phone}
               onChangeText={(val) => this.inputValueUpdate(val, 'phone')}
@@ -121,52 +120,86 @@ class ContactsUpdateDelete extends Component {
               onChangeText={(val) => this.inputValueUpdate(val, 'description')}
           />
         </View>
-        <View style={styles.button}>
-          <Button
-            title='Atualizar'
-            onPress={() => this.updateContact()} 
-            color="#19AC52"
-          />
-          </View>
-         <View>
-          <Button style={styles.botaoLogin}
+
+        <Button style={styles.botaoLogin}
             full
             rounded
             success
-            title='Apagar'
+            onPress={() => this.storeContact()}
+          >
+            <Text style={styles.txtLogin}>Salvar</Text>
+          </Button>
+
+          <Button style={styles.botaoApagar}
+            full
+            rounded
+            success
             onPress={this.openTwoButtonAlert}
-            color="#E37399"
-          />
-        </View>
-      </ScrollView>
+          >
+            <Text style={styles.txtLogin}>Apagar</Text>
+          </Button>
+
+        </ScrollView>
+      // <ScrollView style={styles.containerForms}>
+      //   <View style={styles.inputGroup}>
+      //     <TextInput
+      //         placeholder={'Name'}
+      //         value={this.state.name}
+      //         onChangeText={(val) => this.inputValueUpdate(val, 'name')}
+      //     />
+      //   </View>
+      //   <View style={styles.inputGroup}>
+      //     <TextInput
+      //         multiline={true}
+      //         placeholder={'Telefone'}
+      //         value={this.state.phone}
+      //         onChangeText={(val) => this.inputValueUpdate(val, 'phone')}
+      //     />
+      //   </View>
+      //   <View style={styles.inputGroup}>
+      //     <TextInput
+      //         placeholder={'Descrição'}
+      //         value={this.state.description}
+      //         onChangeText={(val) => this.inputValueUpdate(val, 'description')}
+      //     />
+      //   </View>
+      //   <View >
+      //     <Button 
+      //       style={styles.botaoLogin}
+      //       full
+      //       rounded
+      //       success
+      //       title='Atualizar'
+      //       onPress={() => this.updateContact()} 
+      //       color="#19AC52"
+      //     />
+      //     </View>
+          
+      //    <View>
+      //     <Button style={styles.botaoLogin}
+      //       full
+      //       rounded
+      //       success
+      //       title='Apagar'
+      //       onPress={this.openTwoButtonAlert}
+      //       color="#E37399"
+      //     />
+      //   </View>
+      //   <View>
+      //   <Button style={styles.botaoLogin}
+      //       full
+      //       rounded
+      //       success
+      //       title='Salvar'
+      //       onPress={this.openTwoButtonAlert}
+      //     >
+      //       <Text style={styles.txtLogin}>Salvar</Text>
+      //     </Button>
+      //     </View>
+
+      // </ScrollView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 35
-  },
-  inputGroup: {
-    flex: 1,
-    padding: 0,
-    marginBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-  },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  button: {
-    marginBottom: 7, 
-  }
-})
 
 export default ContactsUpdateDelete;
