@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
       },
+      containerForms: {
+        flex: 1,
+        padding: 35,
+        // justifyContent: 'center',
+      },
     container: {
       flex: 1,
       alignItems: 'center',
@@ -40,7 +45,8 @@ const styles = StyleSheet.create({
     },
     imageContacts:{
       width:150,
-      height:150
+      height:150,
+      marginLeft:50
     },
     txtButton:{
      textAlign:'center',
@@ -55,16 +61,46 @@ const styles = StyleSheet.create({
       fontSize: 18,
     },
     fab:{
-      position:'absolute',
+      borderWidth:1,
+      borderColor:'rgba(0,0,0,0.2)',
+      alignItems:'center',
+      justifyContent:'center',
+      width:70,
+      position: 'absolute',                                          
+      bottom: 10,                                                    
+      right: 10,
+      height:70,
+      backgroundColor:'#fff',
+      borderRadius:100,   
       
     },
     botaoCadastrar: {
       margin: 10,
       backgroundColor: '#4682B4',
     },
+    botaoApagar: {
+      margin: 10,
+      backgroundColor: '#E37399',
+    },
     txtCadastrar: {
       color: '#fff',
       fontSize: 18,
+    },
+    inputGroup: {
+      flex: 1,
+      padding: 0,
+      marginBottom: 15,
+      borderBottomWidth: 1,
+      borderBottomColor: '#cccccc',
+    },
+    preloader: {
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      position: 'absolute',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
     
     

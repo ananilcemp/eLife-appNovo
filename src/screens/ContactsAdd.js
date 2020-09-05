@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import {Text, View ,TextInput,Image, KeyboardAvoidingView} from 'react-native';
+import {Text, View ,TextInput,Image, KeyboardAvoidingView,ScrollView} from 'react-native';
 import {Button} from 'native-base';
 import styles from '../styles/styles';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -53,36 +53,61 @@ export default class ContactsAdd extends React.Component {
 
     render(){
       return (
-        <KeyboardAvoidingView style={styles.containerLogin}  enable>
-           <View style={styles.containerTop}>
-                <Image source={require('../images/telefone.png')} style={styles.imageContacts} />
-          </View>
-          <View style={styles.containerBottom}>
-            <TextInput style={styles.txtInput}  placeholder="Nome" value={this.state.name} onChangeText={(val) => this.inputValueUpdate(val, 'name')}/>
-            <TextInput style={styles.txtInput}  placeholder="Telefone" value={this.state.phone} onChangeText={(val) => this.inputValueUpdate(val, 'phone')}/>
-            <TextInput style={styles.txtInput}  placeholder="Descrição" value={this.state.description} onChangeText={(val) => this.inputValueUpdate(val, 'description')}/>
-            
-            <Button style={styles.botaoLogin}
+        <ScrollView style={styles.containerForms}>
+           <Image source={require('../images/telefone.png')} style={styles.imageContacts} />
+          <View style={styles.inputGroup}>
+          <TextInput
+              placeholder={'Nome'}
+              value={this.state.name}
+              onChangeText={(val) => this.inputValueUpdate(val, 'name')}
+          />
+        </View>
+        <View style={styles.inputGroup}>
+          <TextInput
+              placeholder={'Telefone'}
+              value={this.state.phone}
+              onChangeText={(val) => this.inputValueUpdate(val, 'phone')}
+          />
+        </View>
+        <View style={styles.inputGroup}>
+          <TextInput
+              placeholder={'Descrição'}
+              value={this.state.description}
+              onChangeText={(val) => this.inputValueUpdate(val, 'description')}
+          />
+        </View>
+
+        <Button style={styles.botaoLogin}
             full
             rounded
             success
-            onPress={() =>this.storeContact()}
+            onPress={() => this.storeContact()}
           >
             <Text style={styles.txtLogin}>Salvar</Text>
           </Button>
+
+        </ScrollView>
+        // <KeyboardAvoidingView style={styles.containerLogin}  enable>
+        //    <View style={styles.containerTop}>
+        //         <Image source={require('../images/telefone.png')} style={styles.imageContacts} />
+        //   </View>
+        //   <View style={styles.containerBottom}>
+        //     <TextInput style={styles.txtInput}  placeholder="Nome" value={this.state.name} onChangeText={(val) => this.inputValueUpdate(val, 'name')}/>
+        //     <TextInput style={styles.txtInput}  placeholder="Telefone" value={this.state.phone} onChangeText={(val) => this.inputValueUpdate(val, 'phone')}/>
+        //     <TextInput style={styles.txtInput}  placeholder="Descrição" value={this.state.description} onChangeText={(val) => this.inputValueUpdate(val, 'description')}/>
             
+        //     <Button style={styles.botaoLogin}
+        //     full
+        //     rounded
+        //     success
+        //     onPress={() =>this.storeContact()}
+        //   >
+        //     <Text style={styles.txtLogin}>Salvar</Text>
+        //   </Button>
             
-            
-            {/* <Button style={styles.botaoLogin}
-            full
-            rounded
-            success
-            onPress={() =>this.storeContact()}
-            >
-            <Text style={styles.txtLogin}>Salvar</Text>
-            </Button> */}
-          </View> 
-        </KeyboardAvoidingView>
+
+        //   </View> 
+        // </KeyboardAvoidingView>
       );
       }
     

@@ -11,20 +11,6 @@ import Login from './src/screens/Login';
 
 import * as firebase from 'firebase';
 
-
-//Initialize firebase
-// const firebaseConfig = {
-//   apiKey: "AIzaSyD1fdB4jtUUWaO97zXjsWROW5uQPt7csaU",
-//   authDomain: "react-native-firebase-94486.firebaseapp.com",
-//   databaseURL: "https://react-native-firebase-94486.firebaseio.com",
-//   projectId: "react-native-firebase-94486",
-//   storageBucket: "react-native-firebase-94486.appspot.com",
-// };
-
-
-
-//   firebase.initializeApp(firebaseConfig);
-
 const firebaseConfig = {
   apiKey: "AIzaSyCkcd18-v8VhzjVI97RzV_EUxvduY_1zsE",
   authDomain: "tfg2020-7ccf6.firebaseapp.com",
@@ -42,12 +28,12 @@ if(!firebase.apps.length){
 
 //criacao da stack de navegacao entre telas
 const Nav = createStackNavigator({
-  // Login:{
-  //   screen:Login,
-  //   navigationOptions:{
-  //     title:'Login'
-  //   }
-  // },
+  Login:{
+    screen:Login,
+    navigationOptions:{
+      title:'Login'
+    }
+  },
   Home:{    
     screen:Home,
     navigationOptions:{
