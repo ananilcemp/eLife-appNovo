@@ -109,7 +109,6 @@ class ContactsUpdateDelete extends Component {
         <View style={styles.inputGroup}>
           <TextInput
               multiline={true}
-              numberOfLines={4}
               placeholder={'Telefone'}
               value={this.state.phone}
               onChangeText={(val) => this.inputValueUpdate(val, 'phone')}

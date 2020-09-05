@@ -2,10 +2,17 @@
 import { StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  containerLogin: {
+        flex: 1,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        padding: 10,
+      },
     container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      padding:10
     },
     containerTop: {
       flex: 0.7,
@@ -20,6 +27,7 @@ const styles = StyleSheet.create({
          flex: 1,
          paddingBottom: 22
     },
+    
     txtInput: {
       width:280,
       height: 40, 
@@ -50,6 +58,15 @@ const styles = StyleSheet.create({
       position:'absolute',
       
     },
+    botaoCadastrar: {
+      margin: 10,
+      backgroundColor: '#4682B4',
+    },
+    txtCadastrar: {
+      color: '#fff',
+      fontSize: 18,
+    }
+    
     
   });
 

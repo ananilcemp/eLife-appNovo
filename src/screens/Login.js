@@ -1,10 +1,12 @@
 import {createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import styles from '../styles/styles';
 
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable'
+
 
 import * as firebase from 'firebase';
 
@@ -39,26 +41,34 @@ export default class App extends React.Component {
       return;
     }
   }
+  loginUser = (email, password) => {
 
-  loginUser = (email, password) =>{
-    try{
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
-        console.log(user)
-      })
+    try {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => this.props.navigation.navigate('Home'))
+        .catch(error => {
+          if (error.message === 'The password is invalid or the user does not have a password.') {
+            alert("Verifique sua senha!")
+          }
+          else if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+            alert("Esse email ainda não foi cadastrado ou foi deletado. Por favor insira outro email ou clique no botão cadastrar")
+          }
+          else if(error.message === 'The email address is badly formatted.'){
+            alert("O email não foi inserido ou está mal formatado.")
+          }
+          else{
+            alert(error.message)
+          }
 
-      
-        this.props.navigation.navigate('Home')
-    
-
-    }catch(error){
-      console.log(error.toString())
-      return;
+        })
+    } catch (err) {
+      alert(err);
     }
   }
 
   render() {
     return (
-      <AnimatedContainer style={styles.container}
+      <AnimatedContainer style={styles.containerLogin}
         animation="bounceIn"
         useNativeDriver
       >
@@ -103,33 +113,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    padding: 10,
-  },
-
-  botaoLogin: {
-    margin: 10,
-    marginTop: 40,
-  },
-
-  botaoCadastrar: {
-    margin: 10,
-    backgroundColor: '#4682B4',
-  },
-
-  txtLogin: {
-    color: '#fff',
-    fontSize: 18,
-  },
-
-  txtCadastrar: {
-    color: '#fff',
-    fontSize: 18,
-  }
-});
