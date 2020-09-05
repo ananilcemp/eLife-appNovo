@@ -65,6 +65,10 @@ const styles = StyleSheet.create({
     txtCadastrar: {
       color: '#fff',
       fontSize: 18,
+    },
+    viewTest:{
+      flex: 1,
+      
     }
     
     
