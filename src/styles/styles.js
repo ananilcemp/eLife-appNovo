@@ -109,9 +109,27 @@ const styles = StyleSheet.create({
     logoView:{
       justifyContent: "center",
       alignItems: "center"
+    },
+    btnEsqueceusenha:{
+      margin: 10,
+      backgroundColor: "#666666"
+    },
+    containerFP: {
+      flex: 1,
+      backgroundColor: '#fff',
+      justifyContent: 'center',
+      padding: 10,
+    },
+    botaoFP: {
+      margin: 10,
+      marginTop: 40,
+    },
+    txtFP: {
+      color: '#fff',
+      fontSize: 18,
     }
     
-    
+
   });
 
   export default styles;

@@ -53,27 +53,30 @@ class ContactsList extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.containerList} style={styles.containerList}>
-        {
-          this.state.userArr.map((item, i) => {
-            return (
-              <ListItem key={i} bottomDivider>
-                <Icon name="phone-square" size={35} color="#228b22" onPress={() => Linking.openURL(`tel:${item.phone}`)} />
-                <ListItem.Content>
-                  <ListItem.Title onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
+      <View style={styles.containerList}>
+        <ScrollView style={styles.containerList} >
+          {
+            this.state.userArr.map((item, i) => {
+              return (
+                <ListItem key={i} bottomDivider>
+                  <Icon name="phone-square" size={35} color="#228b22" onPress={() => Linking.openURL(`tel:${item.phone}`)} />
+                  <ListItem.Content>
+                    <ListItem.Title onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
+                      userkey: item.key
+                    })}>{item.name}</ListItem.Title>
+                    <ListItem.Subtitle onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
+                      userkey: item.key
+                    })}>{item.description}</ListItem.Subtitle>
+                  </ListItem.Content>
+                  <ListItem.Chevron onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
                     userkey: item.key
-                  })}>{item.name}</ListItem.Title>
-                  <ListItem.Subtitle onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
-                    userkey: item.key
-                  })}>{item.description}</ListItem.Subtitle>
-                </ListItem.Content>
-                <ListItem.Chevron onPress={() => this.props.navigation.navigate('ContactsUpdateDelete', {
-                  userkey: item.key
-                })} />
-              </ListItem>
-            );
-          })
-        }
+                  })} />
+                </ListItem>
+              );
+            })
+          }
+
+        </ScrollView>
         <View>
           <TouchableOpacity
             onPress={() => { this.props.navigation.navigate('ContactsAdd') }}
@@ -82,7 +85,7 @@ class ContactsList extends Component {
             <Icon name="plus" size={30} color="#01a699" />
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

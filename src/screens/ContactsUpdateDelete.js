@@ -51,13 +51,8 @@ class ContactsUpdateDelete extends Component {
       phone: this.state.phone,
       description: this.state.description,
     }).then((docRef) => {
-      this.setState({
-        key: '',
-        name: '',
-        phone: '',
-        description: '',
-      });
-      // this.props.navigation.navigate('ContactsList');
+      alert("Contato atualizado")
+      this.props.navigation.navigate('ContactsList')
     })
     .catch((error) => {
       console.error("Error: ", error);
@@ -70,8 +65,8 @@ class ContactsUpdateDelete extends Component {
   deleteContact() {
     const dbRef = firebase.firestore().collection('contacts').doc(this.props.navigation.getParam('userkey'))
       dbRef.delete().then((res) => {
-          console.log('Contato apagado.')
-          // this.props.navigation.navigate('ContactsList');
+          alert("Contato apagado")
+          this.props.navigation.navigate('ContactsList');
       })
   }
 
@@ -125,7 +120,7 @@ class ContactsUpdateDelete extends Component {
             full
             rounded
             success
-            onPress={() => this.storeContact()}
+            onPress={() => this.updateContact()}
           >
             <Text style={styles.txtLogin}>Salvar</Text>
           </Button>

@@ -5,9 +5,12 @@ import Home from './src/screens/Home';
 import ContactsAdd from './src/screens/ContactsAdd';
 import ContactsList from './src/screens/ContactsList';
 import ContactsUpdateDelete from './src/screens/ContactsUpdateDelete';
-import Medicines from './src/screens/Medicines';
+import MedicinesList from './src/screens/MedicinesList';
 import MedicinesAdd from './src/screens/MedicinesAdd';
 import Login from './src/screens/Login';
+import ForgotPassword from './src/screens/ForgotPassword';
+import MedicinesUpdateDelete from './src/screens/MedicinesUpdateDelete';
+
 
 import * as firebase from 'firebase';
 
@@ -34,6 +37,12 @@ const Nav = createStackNavigator({
       title:'Login'
     }
   },
+  ForgotPassword:{
+    screen:ForgotPassword,
+    navigationOptions:{
+      title: 'ForgotPassword'
+    }
+  },
   Home:{    
     screen:Home,
     navigationOptions:{
@@ -58,10 +67,10 @@ const Nav = createStackNavigator({
       title:'Detalhes do Contato'
     }
   },
-  Medicines:{
-    screen:Medicines,
+  MedicinesList:{
+    screen:MedicinesList,
     navigationOptions:{
-      title:'Remédios'
+      title:'Remédios Cadastrados'
     }
   },
   MedicinesAdd:{
@@ -69,7 +78,14 @@ const Nav = createStackNavigator({
     navigationOptions:{
       title:'Cadastrar Remédios'
     }
+  },
+  MedicinesUpdateDelete:{
+    screen:MedicinesUpdateDelete,
+    navigationOptions:{
+      title:'Detalhes do Remédio'
+    }
   }
+
   
 })
 

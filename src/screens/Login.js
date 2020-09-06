@@ -22,24 +22,41 @@ export default class App extends React.Component {
     })
   }
 
+ /* goToForgotPassword = () => {
+    
+    
+  
+  }*/
+
+  goToHome = () => {
+    this.setState({ email: '', password: ''})
+    this.props.navigation.navigate('Home')
+  }
+
   signUpUser = (email, password) => {
+
     try {
       if (this.state.password.length < 6) {
         alert("A senha deve conter no mínimo 6 caractéres.")
         return;
       }
 
-      firebase.auth().createUserWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.log(error.toString())
-      return;
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => alert("Usuário cadastrado com sucesso."))
+        .catch(error => {
+          alert(error.message)
+        })
+    } catch (err) {
+      alert(err);
     }
   }
+
+
   loginUser = (email, password) => {
 
     try {
       firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(() => this.props.navigation.navigate('Home'))
+        .then(() => this.goToHome())
         .catch(error => {
           if (error.message === 'The password is invalid or the user does not have a password.') {
             alert("Verifique sua senha!")
@@ -47,10 +64,10 @@ export default class App extends React.Component {
           else if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
             alert("Esse email ainda não foi cadastrado ou foi deletado. Por favor insira outro email ou clique no botão cadastrar")
           }
-          else if(error.message === 'The email address is badly formatted.'){
+          else if (error.message === 'The email address is badly formatted.') {
             alert("O email não foi inserido ou está mal formatado.")
           }
-          else{
+          else {
             alert(error.message)
           }
 
@@ -104,6 +121,12 @@ export default class App extends React.Component {
             onPress={() => this.signUpUser(this.state.email, this.state.password)}
           >
             <Text style={styles.txtCadastrar}>Cadastrar</Text>
+          </Button>
+          <Button
+            onPress={() => this.props.navigation.navigate('ForgotPassword')}
+            style={styles.btnEsqueceuSenha}
+          >
+            <Text>Esqueceu sua senha?</Text>
           </Button>
         </Form>
       </AnimatedContainer>
