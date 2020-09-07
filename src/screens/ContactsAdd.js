@@ -41,7 +41,6 @@ export default class ContactsAdd extends React.Component {
           description: '',
         });
         alert("Contato salvo com sucesso!")
-        // this.props.navigation.navigate('UserScreen')
       })
       .catch((err) => {
         console.error("Erro encontrado: ", err);
@@ -87,27 +86,6 @@ export default class ContactsAdd extends React.Component {
           </Button>
 
         </ScrollView>
-        // <KeyboardAvoidingView style={styles.containerLogin}  enable>
-        //    <View style={styles.containerTop}>
-        //         <Image source={require('../images/telefone.png')} style={styles.imageContacts} />
-        //   </View>
-        //   <View style={styles.containerBottom}>
-        //     <TextInput style={styles.txtInput}  placeholder="Nome" value={this.state.name} onChangeText={(val) => this.inputValueUpdate(val, 'name')}/>
-        //     <TextInput style={styles.txtInput}  placeholder="Telefone" value={this.state.phone} onChangeText={(val) => this.inputValueUpdate(val, 'phone')}/>
-        //     <TextInput style={styles.txtInput}  placeholder="Descrição" value={this.state.description} onChangeText={(val) => this.inputValueUpdate(val, 'description')}/>
-            
-        //     <Button style={styles.botaoLogin}
-        //     full
-        //     rounded
-        //     success
-        //     onPress={() =>this.storeContact()}
-        //   >
-        //     <Text style={styles.txtLogin}>Salvar</Text>
-        //   </Button>
-            
-
-        //   </View> 
-        // </KeyboardAvoidingView>
       );
       }
     

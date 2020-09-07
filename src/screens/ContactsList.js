@@ -3,9 +3,7 @@ import { Linking, ScrollView, TouchableOpacity, View } from 'react-native';
 import { Divider, ListItem } from 'react-native-elements';
 import styles from '../styles/styles';
 import * as firebase from 'firebase';
-// import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// import { Fab } from 'react-native-paper';
 
 class ContactsList extends Component {
 

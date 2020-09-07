@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Alert, Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View } from 'react-native';
 import * as firebase from 'firebase';
+import TimePicker from 'react-native-simple-time-picker';
  
 class MedicinesUpdateDelete extends Component {
  
@@ -10,7 +11,8 @@ class MedicinesUpdateDelete extends Component {
     super();
     this.state = {
       name: '',
-      schedule: '',
+      hours: '',
+      minutes:'',
       description: ''
     };
   }
@@ -23,7 +25,8 @@ class MedicinesUpdateDelete extends Component {
         this.setState({
           key: res.id,
           name: user.name,
-          schedule: user.schedule,
+          hours: user.hours,
+          minutes:user.minutes,
           description: user.description
         });
       } else {
@@ -38,6 +41,15 @@ class MedicinesUpdateDelete extends Component {
     this.setState(state);
   }
  
+  inputValueUpdateHour = (val, prop,val2,prop2) => {
+    const state = this.state;
+    if(val<9) val="0"+val;
+    if(val2<9) val2="0"+val2;
+    state[prop] = val;
+    state[prop2] = val2;
+    this.setState(state);
+  }
+
   updateMedicine() {
     this.setState({
       isLoading: true,
@@ -45,7 +57,8 @@ class MedicinesUpdateDelete extends Component {
     const updateDBRef = firebase.firestore().collection('medicines').doc(this.state.key);
     updateDBRef.set({
       name: this.state.name,
-      schedule: this.state.schedule,
+      hours: this.state.hours,
+      minutes:this.state.minutes,
       description: this.state.description,
     }).then((docRef) => {
         alert("Remédio atualizado com sucesso!");
@@ -82,13 +95,6 @@ class MedicinesUpdateDelete extends Component {
   }
  
   render() {
-    // if(this.state.isLoading){
-    //   return(
-    //     <View style={styles.preloader}>
-    //       <ActivityIndicator size="large" color="#9E9E9E"/>
-    //     </View>
-    //   )
-    // }
     return (
       <ScrollView style={styles.container}>
         <View style={styles.inputGroup}>
@@ -100,13 +106,13 @@ class MedicinesUpdateDelete extends Component {
           />
         </View>
         <View style={styles.inputGroup}>
-          <TextInput
-              multiline={true}
-              numberOfLines={4}
-              placeholder={'Horário'}
-              value={this.state.schedule}
-              onChangeText={(val) => this.inputValueUpdate(val, 'schedule')}
-          />
+        <TimePicker
+           selectedHours={this.state.hours}
+           selectedMinutes={this.state.minutes}
+          onChange={(val1,val2) =>
+            this.inputValueUpdateHour(val1,'hours',val2,'minutes')
+          }
+        />
         </View>
         <View style={styles.inputGroup}>
           <TextInput

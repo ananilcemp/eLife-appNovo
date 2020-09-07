@@ -5,8 +5,7 @@ import { Button } from 'native-base';
 import styles from '../styles/styles';
 import Icon from 'react-native-vector-icons/AntDesign';
 import * as firebase from 'firebase';
- 
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import TimePicker from 'react-native-simple-time-picker';
 Icon.loadFont();
  
 export default class MedicinesAdd extends React.Component {
@@ -17,7 +16,8 @@ export default class MedicinesAdd extends React.Component {
     this.dbRef = firebase.firestore().collection('medicines');       //colecao onde o registro deve ser salvo
     this.state = {                                                  //atributos 
       name: '',
-      schedule: '',
+      hours:'',
+      minutes:'',
       description: ''
     };
   }
@@ -28,20 +28,31 @@ export default class MedicinesAdd extends React.Component {
     state[prop] = val;
     this.setState(state);
   }
+
+  inputValueUpdateHour = (val, prop,val2,prop2) => {
+    const state = this.state;
+    if(val<9) val="0"+val;
+    if(val2<9) val2="0"+val2;
+    state[prop] = val;
+    state[prop2] = val2;
+    this.setState(state);
+  }
  
   storeMedicine() {
     this.dbRef.add({
       name: this.state.name,
-      schedule: this.state.schedule,
       description: this.state.description,
+      hours: this.state.hours,
+      minutes:this.state.minutes
+
     }).then((res) => {
       this.setState({
         name: '',
-        schedule: '',
-        description: '',
+        hours:'',
+        minutes:'',
+        description:''
       });
       alert("Remédio salvo com sucesso!")
-      // this.props.navigation.navigate('UserScreen')
     })
       .catch((err) => {
         console.error("Erro encontrado: ", err);
@@ -52,17 +63,24 @@ export default class MedicinesAdd extends React.Component {
   }
  
   render() {
+    const { selectedHours, selectedMinutes } = this.state;
     return (
- 
+      
       <KeyboardAvoidingView style={styles.container} enable>
         <View style={styles.containerTop}>
           <Image source={require('../images/medicines.jpeg')} style={styles.imageContacts} />
         </View>
         <View style={styles.containerBottom}>
           <TextInput style={styles.txtInput} placeholder="Nome" value={this.state.name} onChangeText={(val) => this.inputValueUpdate(val, 'name')} />
-          <TextInput style={styles.txtInput}  placeholder="Horário" value={this.state.schedule} onChangeText={(val) => this.inputValueUpdate(val, 'schedule')}/>
           <TextInput style={styles.txtInput} placeholder="Descrição" value={this.state.description} onChangeText={(val) => this.inputValueUpdate(val, 'description')} />
-          <Button style={styles.botaoLogin}
+         
+        <TimePicker
+          onChange={(val1,val2) =>
+            this.inputValueUpdateHour(val1,'hours',val2,'minutes')
+          }
+        />
+        
+         <Button style={styles.botaoLogin}
             full
             rounded
             success
@@ -70,16 +88,8 @@ export default class MedicinesAdd extends React.Component {
           >
             <Text style={styles.txtLogin}>Salvar</Text>
           </Button>
-          {/* <Icon.Button
-                name="checkcircle"
-                backgroundColor="#228b22"
-                size={30}
-                borderRadius={50}
-                onPress={() => alert('Cadastrar')}><Text style={styles.txtButton} >Salvar</Text>
-                </Icon.Button> */}
         </View>
       </KeyboardAvoidingView>
     );
   }
 }
-// <TextInput style={styles.txtInput}  placeholder="Horário" value={this.state.schedule} onChangeText={(val) => this.inputValueUpdate(val, 'schedule')}/>
