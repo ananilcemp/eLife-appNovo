@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 
 import styles from '../styles/styles';
 
+
 export default function Home ({navigation}){
     //navegacao para a pagina de contatos
     function navigationContacts(){
@@ -23,13 +24,9 @@ export default function Home ({navigation}){
     }
     return(
         <View style={styles.container}>
-            {/* <Text>Bem vindo ao Home!</Text> */}
-            <Button title="Contatos" onPress={navigationContacts}/>
-            
-            <Button title="Remédios" onPress={navigationMedicines}/>
-
             <Button title="Sair" onPress={sair}/>
         </View>
     );
 
 }
+

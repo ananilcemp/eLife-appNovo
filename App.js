@@ -1,19 +1,15 @@
-import {createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation'; 
 
+import { createAppContainer,createSwitchNavigator } from 'react-navigation';
+import { YellowBox } from 'react-native';
+import _ from 'lodash'; 
+ 
 import Home from './src/screens/Home';                
-import ContactsAdd from './src/screens/ContactsAdd';
-import ContactsList from './src/screens/ContactsList';
-import ContactsUpdateDelete from './src/screens/ContactsUpdateDelete';
-import MedicinesList from './src/screens/MedicinesList';
-import MedicinesAdd from './src/screens/MedicinesAdd';
 import Login from './src/screens/Login';
 import ForgotPassword from './src/screens/ForgotPassword';
-import MedicinesUpdateDelete from './src/screens/MedicinesUpdateDelete';
-
-
+import Stacks from './src/screens/Stacks';
+ 
 import * as firebase from 'firebase';
-
+ 
 const firebaseConfig = {
   apiKey: "AIzaSyCkcd18-v8VhzjVI97RzV_EUxvduY_1zsE",
   authDomain: "tfg2020-7ccf6.firebaseapp.com",
@@ -28,9 +24,10 @@ const firebaseConfig = {
 if(!firebase.apps.length){
   firebase.initializeApp(firebaseConfig)
 }
-
+ 
+ 
 //criacao da stack de navegacao entre telas
-const Nav = createStackNavigator({
+const Nav = createSwitchNavigator({
   Login:{
     screen:Login,
     navigationOptions:{
@@ -43,54 +40,24 @@ const Nav = createStackNavigator({
       title: 'ForgotPassword'
     }
   },
-  Home:{    
-    screen:Home,
+  Stacks:{    
+    screen:Stacks,
     navigationOptions:{
-      title:'Home'
-    }
-  },
-  ContactsAdd:{
-    screen:ContactsAdd,
-    navigationOptions:{
-      title:'Cadastrar Contatos'
-    }
-  },
-  ContactsList:{
-    screen:ContactsList,
-    navigationOptions:{
-      title:'Contatos de Emergência'
-    }
-  },
-  ContactsUpdateDelete:{
-    screen:ContactsUpdateDelete,
-    navigationOptions:{
-      title:'Detalhes do Contato'
-    }
-  },
-  MedicinesList:{
-    screen:MedicinesList,
-    navigationOptions:{
-      title:'Remédios Cadastrados'
-    }
-  },
-  MedicinesAdd:{
-    screen:MedicinesAdd,
-    navigationOptions:{
-      title:'Cadastrar Remédios'
-    }
-  },
-  MedicinesUpdateDelete:{
-    screen:MedicinesUpdateDelete,
-    navigationOptions:{
-      title:'Detalhes do Remédio'
+      title:'Teste'
     }
   }
-
-  
 })
-
-
+ 
+YellowBox.ignoreWarnings(['Setting a timer']);
+    const _console = _.clone(console);
+    console.warn = message => {
+        if (message.indexOf('Setting a timer') <= -1) {
+            _console.warn(message);
+        }
+};
+ 
 const App = createAppContainer (Nav); 
-
+ 
 export default App;
+
 
