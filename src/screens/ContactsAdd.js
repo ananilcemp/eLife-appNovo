@@ -34,6 +34,7 @@ export default class ContactsAdd extends React.Component {
         name: this.state.name,
         phone: this.state.phone,
         description: this.state.description,
+        userId: firebase.auth().currentUser.uid
       }).then((res) => {
         this.setState({
           name: '',

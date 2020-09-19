@@ -26,7 +26,8 @@ class ContactsList extends Component {
   getCollection = (querySnapshot) => {
     const userArr = [];
     querySnapshot.forEach((res) => {
-      const { name, phone, description } = res.data();
+      const { name, phone, description, userId } = res.data();
+      if(firebase.auth().currentUser.uid == res.data().userId)
       userArr.push({
         key: res.id,
         res,
