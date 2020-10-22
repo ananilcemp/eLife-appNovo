@@ -40,7 +40,7 @@ export default class Home extends React.Component {
 
         firebase
             .database()
-            .ref('/Users/-MGfTS2ahjlc9nbcFTSG')
+            .ref('/Users/EEJ0359YT')
             .on('value', data => {
                 this.setState({ dados: data.toJSON() });
                 console.log(this.state.dados.BPM);
