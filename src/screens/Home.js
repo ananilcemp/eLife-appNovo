@@ -54,20 +54,15 @@ export default class Home extends React.Component {
             })*/
     }
 
-
-
-
     render() {
         return (
             <View style={styles.container}>
+                <Button title="Sair" onPress={() => this.sair()} />
                 <Text>{this.state.result}</Text>
                 <Text>{this.state.dados.BPM}</Text>
                 <Text>{this.state.dados.SPO2}</Text>
                 <Text>{this.state.dados.hora}</Text>
-                <Button title="Sair" onPress={() => this.sair()} />
-
             </View>
         );
     }
-
 }

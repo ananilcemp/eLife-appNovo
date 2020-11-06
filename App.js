@@ -3,13 +3,14 @@ import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import { YellowBox } from 'react-native';
 import _ from 'lodash'; 
  
+import firebase from 'firebase';
+import 'firebase/firestore';
+ 
 import Home from './src/screens/Home';                
 import Login from './src/screens/Login';
 import ForgotPassword from './src/screens/ForgotPassword';
 import Stacks from './src/screens/Stacks';
- 
-import * as firebase from 'firebase';
- 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCkcd18-v8VhzjVI97RzV_EUxvduY_1zsE",
   authDomain: "tfg2020-7ccf6.firebaseapp.com",

@@ -122,12 +122,14 @@ export default class App extends React.Component {
           >
             <Text style={styles.txtCadastrar}>Cadastrar</Text>
           </Button>
+          
           <Button
             onPress={() => this.props.navigation.navigate('ForgotPassword')}
             style={styles.btnEsqueceuSenha}
           >
             <Text>Esqueceu sua senha?</Text>
           </Button>
+
         </Form>
       </AnimatedContainer>
     );
